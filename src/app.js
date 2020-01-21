@@ -1,4 +1,7 @@
+const path = require('path')
 const express = require('express')
+//console.log(__dirname)
+// console.log(path.join(__dirname,'../public'))
 const app = express()
 
 
@@ -7,25 +10,17 @@ const app = express()
 // fitst argument (request)
 //second argument 9(reposnse)
 
+
+const publicDirectoryPath = path.join(__dirname,'../public')
+
+app.use(express.static(publicDirectoryPath))
+
+
 app.get('', (req,res) => {
   // res.send is sending back a response 
     res.send ('<h1>Weather<h1>')
 })
 
-app.get('/help', (req, res) =>{
-    res.send([{
-        name: 'Ana',
-        age: 28
-    },{
-        name: 'Manu',
-        age:40
-    }
-])
-})
-
-app.get('/about', (req, res) =>{
-    res.send('<h1 This wedsite it is about weather<h1>')
-})
 
 app.get('/weather', (req, res) =>{
     res.send({
