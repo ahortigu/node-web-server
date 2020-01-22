@@ -2,14 +2,21 @@
 <html>
 
 <head>
+    <title>About</title>
+    <link rel="icon" href="css/img/weather-icon.png">
+    <link rel="stylesheet" href="/css/styles.css">
+    <div class="main-content"> </div>
 
 </head>
 
 
-<body>
-    {{>header}}
-    <p>Created by {{name}}</p>
-    <img src="/css/img/sun.jpg">
+<body> 
+    <div class="main-content">
+        {{>header}}
+        <p>Created by {{name}}</p>
+        <img class="portrait" src="/css/img/sun.jpg">
+        </div>
+
     {{>footer}}
 </body>
 
