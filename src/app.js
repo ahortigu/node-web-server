@@ -28,14 +28,16 @@ app.use(express.static(publicDirectoryPath))
 app.get('',(req,res) => {
     res.render('index',{
         title:'Weather App',
-        name:'Ana Garcia'
+        name:'Ana Garcia',
+        start:'Back to main page'
     })
 }) 
  
 app.get('/about',(req,res) => {
     res.render('about',{
         title:'About',
-        name:'Ana Garcia'
+        name:'Ana Garcia',
+        start:'Back to main page'
     })
 }) 
 
@@ -43,6 +45,7 @@ app.get('/help',(req,res) => {
     res.render('help',{
         title:'help',
         name:'Ana Garcia',
+        start:'Back to main page',
         helpText:'In this website you can find any help you may need'
     })
 }) 
@@ -54,8 +57,28 @@ app.get('/weather', (req, res) =>{
     })
 })
 
+// It has to come last
+
+// help webpage with something else *
+
+app.get('/help/*', (req, res) =>{
+    res.render('404', {
+        title: '404',
+        name:'Ana Garcia',
+        errorMessage:'Help article not found.'
+    })
+})
+
+// Any other request from the client
+app.get('*', (req, res) =>{
+    res.render('404', {
+        title: '404',
+        name:'Ana Garcia',
+        errorMessage:'Page not found'
+    })
+})
+
 app.listen(3000, () =>{
     console.log('Server is up on port 3000')
-
 })
 
