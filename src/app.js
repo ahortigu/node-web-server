@@ -60,9 +60,9 @@ app.get('/weather', (req, res) =>{
             error:'Please provide a location'
         })
     }else{
-    geocode(req.query.address, (error, {latitude, longitude, location}) => {
+    geocode(req.query.address, (error, {latitude, longitude, location}=0) => {
             if(error){
-                return res.send( {error: 'error'})
+                return res.send( {error: 'Unable to find location. Try another search.'})
             }
             forecast(latitude,longitude, (error, forecastData) => {
                 if(error){
